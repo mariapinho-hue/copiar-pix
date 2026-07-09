@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Copiar PIX</title>
+<style>
+body{font-family:Arial,sans-serif;background:#f8f3ef;display:flex;justify-content:center;align-items:center;height:100vh;margin:0}
+.card{background:#fff;padding:30px;border-radius:18px;box-shadow:0 8px 20px rgba(0,0,0,.15);max-width:420px;text-align:center}
+button{background:#2e9d68;color:#fff;border:none;padding:15px 24px;border-radius:12px;font-size:18px;cursor:pointer;width:100%}
+#msg{margin-top:18px;font-weight:bold;color:#2e9d68}
+textarea{width:100%;height:120px}
+</style>
+</head>
+<body>
+<div class="card">
+<h2>🎁 Presente via PIX</h2>
+<p>Toque no botão abaixo para copiar o código PIX.</p>
+<button onclick="copyPix()">Copiar Chave PIX</button>
+<div id="msg"></div>
+</div>
+<script>
+const pix=`00020101021126330014br.gov.bcb.pix0111090720583645204000053039865802BR5923MARIA EDUARDA PAZ PINHO6009SAO PAULO622905251KX3RB3GJSGR1GFGMRSK00S0M63045173`;
+async function copyPix(){
+try{
+await navigator.clipboard.writeText(pix);
+document.getElementById("msg").textContent="✅ PIX copiado com sucesso!";
+}catch(e){
+document.getElementById("msg").innerHTML="Seu navegador bloqueou a cópia automática.<br><br><textarea readonly>"+pix+"</textarea>";
+}
+}
+window.onload=copyPix;
+</script>
+</body>
+</html>
